@@ -16,6 +16,19 @@ struct node* create() { // create trie
     return newnode;
 }
 
+void insert(struct node* root, const char* key) { // inserting key to trie
+    struct node* current = root;
+    while(*key) {
+        int index = *key - 'a';
+        if (!current -> child[index]) {
+            current -> child[index] = create();
+        }
+        current = current -> child[index];
+        key++;
+    }
+    current -> flag = true;    
+}
+
 int main() {
     return 0;
 }
